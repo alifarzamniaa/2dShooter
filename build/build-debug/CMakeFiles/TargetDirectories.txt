@@ -1,3 +1,0 @@
-F:/c++/2dShooter/build/build-debug/CMakeFiles/2dShooter.dir
-F:/c++/2dShooter/build/build-debug/CMakeFiles/edit_cache.dir
-F:/c++/2dShooter/build/build-debug/CMakeFiles/rebuild_cache.dir

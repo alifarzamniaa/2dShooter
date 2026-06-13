@@ -1,4 +1,3 @@
 externals/vcpkg
 build/
 bin/
-settings.json
