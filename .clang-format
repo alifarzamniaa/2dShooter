@@ -1,10 +1,10 @@
 BasedOnStyle: LLVM
 IndentWidth: 4
-AllowShortBlocksOnASingleLine : Empty
-AllowShortFunctionsOnASingleLine : Empty
-AllowShortLambdasOnASingleLine : None
-BreakBeforeBraces : Allman
-PointerAlignment : Left
-SeparateDefinitionBlocks : Always
-SpaceAfterOperatorKeyword : false
-SpaceAfterTemplateKeyword : false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: None
+AllowShortLambdasOnASingleLine: None
+BreakBeforeBraces: Allman
+PointerAlignment: Left
+SeparateDefinitionBlocks: Always
+SpaceAfterOperatorKeyword: false
+SpaceAfterTemplateKeyword: false

@@ -1,5 +1,5 @@
 @echo off
-pushd bin\Release
+pushd bin\Debug
 @echo Runnning the project in Debug mode...
-cmake --build .
+.\2dShooter.exe
 popd
