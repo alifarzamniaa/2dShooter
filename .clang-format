@@ -8,3 +8,8 @@ PointerAlignment: Left
 SeparateDefinitionBlocks: Always
 SpaceAfterOperatorKeyword: false
 SpaceAfterTemplateKeyword: false
+AllowShortCompoundRequirementOnASingleLine : false
+AllowShortEnumsOnASingleLine : false
+BreakBeforeTemplateCloser : false
+BreakTemplateDeclarations : Yes
+AllowShortIfStatementsOnASingleLine : Never
