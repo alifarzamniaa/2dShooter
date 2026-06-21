@@ -46,6 +46,7 @@ struct ComponentContainer : ComponentI
                 components.pop_back();
                 entityIdPerIndex.pop_back();
                 componentMapping.erase(e.id);
+            }
             else
             {
                 components[componentIndex->second] =

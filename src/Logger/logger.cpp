@@ -16,7 +16,11 @@ std::string Logger::GetTime()
     // and mac use localtime_r
     std::time_t currentTime = time(nullptr);
     struct std::tm date;
-    localtime_s(&date, &currentTime);
+    #ifdef WIN_32
+        localtime_s(&date, &currentTime);
+    #else
+        localtime_r(&currentTime,&date);
+    #endif
     char buffer[50]; // to store the time
     std::strftime(buffer, sizeof(buffer), "[%Y-%B-%d --- %H:%M:%S]", &date);
     return buffer;
