@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(2dShooter)
 add_executable(2dShooter src/main.cpp src/Logger/logger.cpp)
-find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3-shared)
+find_package(SDL3 REQUIRED CONFIG)
 find_package(SDL3_image CONFIG REQUIRED)
 find_package(SDL3_ttf CONFIG REQUIRED)
 find_package(SDL3_mixer CONFIG REQUIRED)

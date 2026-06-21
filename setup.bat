@@ -26,4 +26,41 @@ cmake -B build\build-release ^
   -DCMAKE_TOOLCHAIN_FILE="%VCPKG_DIR%\scripts\buildsystems\vcpkg.cmake" ^
   -DCMAKE_BUILD_TYPE=Release ^
   -DVCPKG_TARGET_TRIPLET=x64-windows
+
+echo Generating build.bat for building in release mode....
+(
+echo @echo off
+echo echo building project in Release mode...
+echo pushd build\build-release
+echo cmake --build .
+echo popd
+) > build.bat
+
+echo Generating buildd.bat for building in debug mode....
+(
+echo @echo off
+echo echo building project in debug mode...
+echo pushd build\build-debug
+echo cmake --build .
+echo popd
+) > buildd.bat
+
+echo Generating run.bat for running in release mode....
+(
+echo @echo off
+echo echo Running project in Release mode...
+echo pushd bin\Release
+echo 2dShooter.exe
+echo popd
+) > run.bat
+
+echo Generating rund.bat for running in debug mode....
+(
+echo @echo off
+echo echo Running project in Debug mode...
+echo pushd bin\Debug
+echo 2dShooter.exe
+echo popd
+) > rund.bat
+
 echo done.

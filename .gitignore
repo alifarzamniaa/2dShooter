@@ -1,3 +1,12 @@
 externals/vcpkg
 build/
 bin/
+build.sh
+buildd.sh
+run.sh
+rund.sh
+
+build.bat
+buildd.bat
+run.bat
+rund.bat
