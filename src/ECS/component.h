@@ -8,6 +8,7 @@
 struct ComponentI
 {
     virtual ~ComponentI() {};
+    virtual void RemoveEntity(const Entity& e);
 };
 
 template<typename ComponentClassType>
@@ -49,15 +50,13 @@ struct ComponentContainer : ComponentI
             }
             else
             {
-                components[componentIndex->second] =
-                    std::move(components.back());
+                components[componentIndex->second] = std::move(components.back());
                 components.pop_back();
                 // NOTE(ali-farzamnia): swap-and-pop: move last component into
                 // the deleted slot to keep the array contiguous without
                 // shifting
                 int lastComponentOwnerId = entityIdPerIndex.back();
-                componentMapping.at(lastComponentOwnerId) =
-                    componentIndex->second;
+                componentMapping.at(lastComponentOwnerId) = componentIndex->second;
 
                 // NOTE(ali-farzamnia): patch up both lookup structures to
                 // reflect the last component's new index
@@ -66,6 +65,13 @@ struct ComponentContainer : ComponentI
                 componentMapping.erase(e.id);
             }
         }
+    }
+
+    void Destroy()
+    {
+        components.clear();
+        entityIdPerIndex.clear();
+        componentMapping.clear();
     }
 
     ComponentClassType* GetComponent(const Entity& e)
@@ -79,6 +85,11 @@ struct ComponentContainer : ComponentI
             return nullptr;
         }
         return &components[comp->second];
+    }
+
+    void RemoveEntity(const Entity& e) override
+    {
+        RemoveComponent(e);
     }
 };
 #endif
