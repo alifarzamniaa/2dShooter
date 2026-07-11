@@ -14,3 +14,4 @@ BreakBeforeTemplateCloser : false
 BreakTemplateDeclarations : Yes
 AllowShortIfStatementsOnASingleLine : Never
 ColumnLimit: 110
+IndentPPDirectives: Leave 

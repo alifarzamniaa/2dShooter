@@ -20,12 +20,14 @@ echo Configuring Debug...
 cmake -B build\build-debug ^
   -DCMAKE_TOOLCHAIN_FILE="%VCPKG_DIR%\scripts\buildsystems\vcpkg.cmake" ^
   -DCMAKE_BUILD_TYPE=Debug ^
-  -DVCPKG_TARGET_TRIPLET=x64-windows
+  -DVCPKG_TARGET_TRIPLET=x64-windows^
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 echo Configuring Release...
 cmake -B build\build-release ^
   -DCMAKE_TOOLCHAIN_FILE="%VCPKG_DIR%\scripts\buildsystems\vcpkg.cmake" ^
   -DCMAKE_BUILD_TYPE=Release ^
-  -DVCPKG_TARGET_TRIPLET=x64-windows
+  -DVCPKG_TARGET_TRIPLET=x64-windows ^
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 echo Generating build.bat for building in release mode....
 (
