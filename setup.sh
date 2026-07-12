@@ -7,16 +7,16 @@ echo "Initializing the project and building..."
 echo "checking vcpkg..."
 
 if [ ! -f "$VCPKG_DIR/vcpkg" ]; then
-    echo "vcpkg not found... cloning vcpkg now"
-    git clone https://github.com/microsoft/vcpkg.git externals/vcpkg
-    pushd "$VCPKG_DIR"
-    ./bootstrap-vcpkg.sh
-    popd
+  echo "vcpkg not found... cloning vcpkg now"
+  git clone https://github.com/microsoft/vcpkg.git externals/vcpkg
+  pushd "$VCPKG_DIR"
+  ./bootstrap-vcpkg.sh
+  popd
 fi
 
 echo "vcpkg is ready."
 echo "Installing dependencies..."
-"$VCPKG_DIR/vcpkg" install sdl3 sdl3-image sdl3-mixer sdl3-ttf --triplet x64-linux
+"$VCPKG_DIR/vcpkg" install sdl3 "sdl3-image[png,jpeg]" sdl3-mixer sdl3-ttf --triplet x64-linux
 
 rm -rf build/build-debug build/build-release
 mkdir -p build
@@ -34,7 +34,7 @@ cmake -B build/build-release \
   -DVCPKG_TARGET_TRIPLET=x64-linux
 
 echo "Creating build.sh for building in release..."
-cat > build.sh << 'EOF'
+cat >build.sh <<'EOF'
 #!/bin/sh
 set -e
 CURRENTDIR="$PWD"
@@ -46,7 +46,7 @@ EOF
 echo "Created build.sh successfully."
 
 echo "Creating build.sh for building in debug..."
-cat > buildd.sh << 'EOF'
+cat >buildd.sh <<'EOF'
 #!/bin/sh
 set -e
 CURRENTDIR="$PWD"
@@ -58,7 +58,7 @@ EOF
 echo "Created buildd.sh successfully."
 
 echo "Creating run.sh for running the program in Release..."
-cat > run.sh << 'EOF'
+cat >run.sh <<'EOF'
 #!/bin/sh
 set -e
 CURRENTDIR="$PWD"
@@ -70,7 +70,7 @@ EOF
 echo "Created run.sh successfully."
 
 echo "Creating rund.sh for running the program in Debug..."
-cat > rund.sh << 'EOF'
+cat >rund.sh <<'EOF'
 #!/bin/sh
 set -e
 CURRENTDIR="$PWD"
@@ -87,3 +87,4 @@ chmod +x run.sh
 chmod +x rund.sh
 
 echo "done."
+

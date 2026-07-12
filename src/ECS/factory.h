@@ -3,7 +3,7 @@
 #include "Components/sprite.h"
 #include "Components/transform.h"
 #include "world.h"
-#include <SDL3/SDL_render.h>
+#include <SDL3/SDL.h>
 
 class Factory
 {

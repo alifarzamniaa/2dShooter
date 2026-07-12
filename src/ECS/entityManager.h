@@ -9,13 +9,15 @@
 class EntityManager
 {
 
-    static constexpr int NULL_ENTITY = -1;
+    const Entity NULL_ENTITY = -1;
 
   public:
     EntityManager(int in_numberOfEntities)
     {
+
         for (size_t i = 0; i < in_numberOfEntities; i++)
         {
+
             entities.push_back(NULL_ENTITY);
         }
     }
@@ -31,7 +33,7 @@ class EntityManager
 
     void RemoveEntity(const Entity& e)
     {
-        int densePos = entities[e.id];
+        Entity densePos = entities[e.id];
         if (densePos == aliveEntities.size() - 1)
         {
             aliveEntities.pop_back();
@@ -39,18 +41,23 @@ class EntityManager
         }
         else
         {
-            entities[aliveEntities[aliveEntities.size() - 1]] = densePos;
-            aliveEntities[densePos] = aliveEntities[aliveEntities.size() - 1];
+            entities[aliveEntities[aliveEntities.size() - 1].id] = densePos;
+            aliveEntities[densePos.id] = aliveEntities[aliveEntities.size() - 1];
             aliveEntities.pop_back();
             entities[e.id] = NULL_ENTITY;
         }
     }
 
+    std::vector<Entity>& GetEntity()
+    {
+        return aliveEntities;
+    }
+
   private:
-    int entityIds = 0;
+    size_t entityIds = 0;
     // spars
-    std::vector<int> entities;
+    std::vector<Entity> entities;
     // dense
-    std::vector<size_t> aliveEntities;
+    std::vector<Entity> aliveEntities;
 };
 #endif // !ENTITY_MANAGER_H

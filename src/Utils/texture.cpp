@@ -1,6 +1,7 @@
 #include "texture.h"
 #include "../Logger/logger.h"
 #include "SDL3_image/SDL_image.h"
+#include <SDL3/SDL.h>
 #include <string>
 
 Texture::Texture() : texture(nullptr)
@@ -64,6 +65,8 @@ bool Texture::LoadTexture(const char* path, SDL_Renderer* renderer)
         {
             std::string error = "Cannot create Texture from surface with path: ";
             error.append(path);
+            error.append("\n SDL_Error: ");
+            error.append(SDL_GetError());
             Logger::Error(error);
         }
     }
@@ -71,6 +74,8 @@ bool Texture::LoadTexture(const char* path, SDL_Renderer* renderer)
     {
         std::string error = "Cannot create surface from path: ";
         error.append(path);
+        error.append("\n SDL_Error: ");
+        error.append(SDL_GetError());
         Logger::Error(error);
     }
     SDL_DestroySurface(surface);

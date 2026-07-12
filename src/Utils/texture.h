@@ -1,7 +1,6 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
-#include <SDL3/SDL_render.h>
-#include <SDL3/SDL_surface.h>
+#include <SDL3/SDL.h>
 
 class Texture
 {

@@ -12,7 +12,7 @@ if not exist "%VCPKG_DIR%\vcpkg.exe" (
 ) 
 echo vcpkg is ready.
 echo Installing dependencies...
-call "%VCPKG_DIR%\vcpkg.exe" install sdl3 sdl3-image sdl3-mixer sdl3-ttf --triplet x64-windows
+call "%VCPKG_DIR%\vcpkg.exe" install sdl3 "sdl3-image[png,jpeg]" sdl3-mixer sdl3-ttf --triplet x64-windows
 if exist build\build-debug rmdir /s /q build\build-debug
 if exist build\build-release rmdir /s /q build\build-release
 mkdir build
