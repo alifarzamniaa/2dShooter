@@ -19,12 +19,12 @@ class ComponentManager
     }
 
     template<typename T>
-    void AddEntityComponent(const T& in_component, const Entity& e)
+    void AddEntityComponent(T in_component, const Entity& e)
     {
         auto c = componentsMap.find(typeid(T));
         if (c != componentsMap.end())
         {
-            static_cast<ComponentContainer<T>*>(c->second.get())->AddComponent(in_component, e);
+            static_cast<ComponentContainer<T>*>(c->second.get())->AddComponent(std::move(in_component), e);
             entityComponentsMap[e.id].push_back(typeid(T));
         }
     }

@@ -25,8 +25,8 @@ class Factory
         Sprite pSprite;
         pSprite.texture.LoadTexture("../../assets/player/Player_Base.png", renderer);
         // Adding Components To entity
-        world.cm.AddEntityComponent<Transform>(pTransform, e);
-        world.cm.AddEntityComponent<Sprite>(pSprite, e);
+        world.cm.AddEntityComponent<Transform>(std::move(pTransform), e);
+        world.cm.AddEntityComponent<Sprite>(std::move(pSprite), e);
     }
 
   private:

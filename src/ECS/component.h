@@ -22,14 +22,14 @@ struct ComponentContainer : ComponentI
     // contigious
     std::unordered_map<int, int> componentMapping;
 
-    void AddComponent(const ComponentClassType& in_component, const Entity& e)
+    void AddComponent(ComponentClassType in_component, const Entity& e)
     {
         // NOTE(ali-farzamnia) : to stop adding duplicate
         if (componentMapping.find(e.id) != componentMapping.end())
         {
             return;
         }
-        components.push_back(in_component);
+        components.push_back(std::move(in_component));
         entityIdPerIndex.push_back(e.id);
         // NOTE(ali-farzamnia) : store the index of the pushed component so we
         // can find it by -- entity id with complexity of O(1)
