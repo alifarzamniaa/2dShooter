@@ -26,11 +26,11 @@ class World
     }
 
   public:
+    const int wWidth;
+    const int wHeight;
     ComponentManager cm;
     EntityManager em;
     SDL_Window* window;
     SDL_Renderer* renderer;
-    const int wWidth;
-    const int wHeight;
 };
 #endif

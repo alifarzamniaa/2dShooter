@@ -16,11 +16,11 @@ struct ComponentContainer : ComponentI
 
 {
     std::vector<ComponentClassType> components;
-    std::vector<int> entityIdPerIndex;
+    std::vector<size_t> entityIdPerIndex;
     // TODO(ali-farzamnia) : for better performance i should consider using
     // sparse or other alghoritms rather than unordered map beacuse its not
     // contigious
-    std::unordered_map<int, int> componentMapping;
+    std::unordered_map<size_t, size_t> componentMapping;
 
     void AddComponent(ComponentClassType in_component, const Entity& e)
     {
@@ -55,7 +55,7 @@ struct ComponentContainer : ComponentI
                 // NOTE(ali-farzamnia): swap-and-pop: move last component into
                 // the deleted slot to keep the array contiguous without
                 // shifting
-                int lastComponentOwnerId = entityIdPerIndex.back();
+                size_t lastComponentOwnerId = entityIdPerIndex.back();
                 componentMapping.at(lastComponentOwnerId) = componentIndex->second;
 
                 // NOTE(ali-farzamnia): patch up both lookup structures to

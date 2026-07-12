@@ -21,12 +21,18 @@ class RenderSystem
             if (tf && sp)
             {
                 SDL_RenderClear(world.renderer);
-                SDL_FRect rect;
-                rect.x = tf->pos.x;
-                rect.y = tf->pos.y;
-                rect.w = sp->texture.GetWidth();
-                rect.h = sp->texture.GetHeight();
-                SDL_RenderTexture(world.renderer, sp->texture.GetTexture(), &rect, nullptr);
+                SDL_FRect texRect;
+                texRect.x = 0;
+                texRect.y = 0;
+                texRect.w = (float)48;
+                texRect.h = (float)sp->texture.GetHeight();
+
+                SDL_FRect transformRect;
+                transformRect.x = tf->pos.x;
+                transformRect.y = tf->pos.y;
+                transformRect.w = (float)48;
+                transformRect.h = (float)sp->texture.GetHeight();
+                SDL_RenderTexture(world.renderer, sp->texture.GetTexture(), &texRect, &transformRect);
                 SDL_RenderPresent(world.renderer);
             }
         }

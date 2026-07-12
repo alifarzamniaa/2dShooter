@@ -1,6 +1,7 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 #include "Components/sprite.h"
+#include "Components/tags.h"
 #include "Components/transform.h"
 #include "world.h"
 #include <SDL3/SDL.h>
@@ -18,15 +19,20 @@ class Factory
         // Compoenents Registery
         world.cm.RegisterComponent<Transform>();
         world.cm.RegisterComponent<Sprite>();
+        world.cm.RegisterComponent<Tag>();
         // Components Creation
         Transform pTransform;
         pTransform.pos = Vec2(0.0f, 0.0f);
 
         Sprite pSprite;
         pSprite.texture.LoadTexture("../../assets/player/Player_Base.png", renderer);
+
+        Tag pTag;
+        pTag.tag = "player";
         // Adding Components To entity
         world.cm.AddEntityComponent<Transform>(std::move(pTransform), e);
         world.cm.AddEntityComponent<Sprite>(std::move(pSprite), e);
+        world.cm.AddEntityComponent<Tag>(std::move(pTag), e);
     }
 
   private:

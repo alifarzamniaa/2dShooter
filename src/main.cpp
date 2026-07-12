@@ -1,3 +1,4 @@
+#include "ECS/Systems/InputSystem.h"
 #include "ECS/Systems/RenderSystem.h"
 #include "ECS/factory.h"
 #include "ECS/world.h"
@@ -14,10 +15,11 @@ int main()
     World world(100);
     Factory factory(world, world.renderer);
     factory.CreatePlayer();
+    InputSystem input(world);
     RenderSystem render(world);
-    while (true)
+    while (!input.GetQuitState())
     {
-
+        input.Update();
         render.Update();
     }
     return 0;
