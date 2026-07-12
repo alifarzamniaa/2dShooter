@@ -8,7 +8,7 @@
 struct ComponentI
 {
     virtual ~ComponentI() {};
-    virtual void RemoveEntity(const Entity& e);
+    virtual void RemoveEntity(const Entity& e) = 0;
 };
 
 template<typename ComponentClassType>
